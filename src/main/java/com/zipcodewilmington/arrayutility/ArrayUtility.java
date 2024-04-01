@@ -1,5 +1,7 @@
 package com.zipcodewilmington.arrayutility;
 
+import java.util.Arrays;
+
 /**
  * Created by leon on 3/6/18.
  */
@@ -25,8 +27,16 @@ public class ArrayUtility<T> {
         return getNumberOfOccurrences(valueToEvaluate, newArr);
     }
 
-    public Integer[] removeValue(Integer valueToRemove) {
-        return null;
+    public T[] removeValue(Integer valueToRemove) {
+        int i = 0;
+        for(int j = 0; i < array.length; j++){
+            if(!array[j].equals(valueToRemove)){
+                array[i++] = array[j];
+            }
+        }
+        array = Arrays.copyOf(array, i);
+
+        return array;
     }
 
     private Integer getNumberOfOccurrences(Integer valueToEvaluate, T[] array) {
