@@ -53,7 +53,18 @@ public class ArrayUtility<T> {
         return getNumberOfOccurrences((Integer) valueToEvaluate, array);
     }
 
-    public Integer getMostCommonFromMerge(Integer[] arrayToMerge) {
-        return null;
+    public Integer getMostCommonFromMerge(T[] arrayToMerge) {
+        T[] newArray = merge(arrayToMerge);  // Merges arrayToMerge with array initialized in the constructor
+        T mostCommon = newArray[0];
+        int maxNum = Integer.MIN_VALUE;
+
+        for(T t : newArray){
+            int currentNumOccurrences = getNumberOfOccurrences(t, newArray);
+            if(currentNumOccurrences > maxNum){
+                mostCommon = t;
+                maxNum = currentNumOccurrences;
+            }
+        }
+        return (Integer) mostCommon;
     }
 }
