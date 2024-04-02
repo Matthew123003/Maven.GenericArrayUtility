@@ -20,14 +20,14 @@ public class ArrayUtility<T> {
 
         return (T[]) newArr;
     }
-    public Integer countDuplicatesInMerge(Integer[] arrayToMerge, Integer valueToEvaluate) {
+    public Integer countDuplicatesInMerge(T[] arrayToMerge, T valueToEvaluate) {
         //Merge arrayToMerge with array created in field;
-        T[] newArr = merge((T[]) arrayToMerge);
+        T[] newArr = merge(arrayToMerge);
 
         return getNumberOfOccurrences(valueToEvaluate, newArr);
     }
 
-    public T[] removeValue(Integer valueToRemove) {
+    public T[] removeValue(T valueToRemove) {
         int i = 0;
         for(int j = 0; i < array.length; j++){
             if(!array[j].equals(valueToRemove)){
@@ -39,7 +39,7 @@ public class ArrayUtility<T> {
         return array;
     }
 
-    private Integer getNumberOfOccurrences(Integer valueToEvaluate, T[] array) {
+    private Integer getNumberOfOccurrences(T valueToEvaluate, T[] array) {
         int count = 0;
         for(T t : array){
             if(t == valueToEvaluate){
@@ -50,7 +50,7 @@ public class ArrayUtility<T> {
     }
 
     public Integer getNumberOfOccurrences(T valueToEvaluate){
-        return getNumberOfOccurrences((Integer) valueToEvaluate, array);
+        return getNumberOfOccurrences(valueToEvaluate, array);
     }
 
     public T getMostCommonFromMerge(T[] arrayToMerge) {
@@ -59,7 +59,7 @@ public class ArrayUtility<T> {
         int maxNum = Integer.MIN_VALUE;
 
         for(T t : newArray){
-            int currentNumOccurrences = getNumberOfOccurrences((Integer) t, newArray);
+            int currentNumOccurrences = getNumberOfOccurrences(t, newArray);
             if(currentNumOccurrences > maxNum){
                 mostCommon = t;
                 maxNum = currentNumOccurrences;
